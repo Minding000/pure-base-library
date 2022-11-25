@@ -1,0 +1,19 @@
+referencing Pure
+
+native Float class: Number {
+
+	native operator ++
+	native operator --
+	native operator +=(right: Float)
+	native operator -=(right: Float)
+	native operator *=(right: Float)
+	native operator /=(right: Float)
+	native operator +(right: Float): Float
+	native operator -(right: Float): Float
+	native operator *(right: Float): Float
+	native operator /(right: Float): Float
+	native operator <(right: Float): Bool
+	native operator >(right: Float): Bool
+	native operator <=(right: Float): Bool
+	native operator >=(right: Float): Bool
+}

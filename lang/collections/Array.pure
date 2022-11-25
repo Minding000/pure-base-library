@@ -1,0 +1,12 @@
+referencing Pure
+
+native Array class {
+	containing Element
+	val length: Int
+
+	native init(...values: ...Element)
+	native init(value: Element, length)
+
+	native operator [index: Int]: Element
+	native operator [index: Int](element: Element)
+}

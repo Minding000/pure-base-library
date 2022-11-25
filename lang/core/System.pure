@@ -1,0 +1,103 @@
+referencing Pure
+
+native System class {
+	Clock object {
+		val time: Time
+		val precision: Int
+	}
+
+	Networking object {
+		val loopbackAddress: IpAddress
+		val hostname: String
+
+		to bindPort(portNumber: Int): Port {
+			return Port(portNumber)
+		}
+		
+		to unbindPort(port: Port) {
+
+		}
+
+		IpAddress class {
+			
+		}
+
+		Port class {
+			val number: Int
+
+			init(number)
+		}
+	}
+
+	EntropyGenerator object {
+		val isCryptographicallySafe: Bool
+		val isHardwareDevice: Bool
+
+		to getRandomBytes(length: Int): <Byte>Array {
+
+		}
+		
+		to getRandomInt(): Int {
+
+		}
+		
+		to getRandomFloat(): Float {
+
+		}
+		
+		to getRandomString(): String {
+
+		}
+	}
+	
+	WindowManager object {
+		to createWindow(): Window {
+			return null
+		}
+
+		to closeWindow(window: Window) {
+			
+		}
+
+		Window class {
+
+		}
+	}
+
+	Information object {
+		val operatingSystem: Version
+		val processors: <Processor>Array
+
+		Processor class {
+			val name: String
+			val cores: <Core>Array
+			val coreCount: Int
+			val threadCount: Int
+
+			Core class {
+				val threadCount: Int
+				val type: String
+			}
+		}
+	}
+
+	Files object {
+		val fileSeparator: String
+		val pathSeparator: String
+		val lineSeparator: String
+		val extensionSeparator: String
+
+		to lockFile() {
+
+
+		}
+
+		to unlockFile() {
+
+		}
+
+		to openFile() {
+		
+		}
+	}
+}

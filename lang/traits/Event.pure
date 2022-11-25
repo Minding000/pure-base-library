@@ -1,0 +1,35 @@
+referencing Pure
+
+Event class {}
+
+trait Emitter {
+	containing E: Event
+	alias EventHandler = (E) =>|
+
+	val handlers = <EventHandler>List()
+	// copy complete type definition
+	// replace generic types (cascade to SimpleType, replace definition)
+	// what about complex types as generic parameters?
+	// replace SimpleType definition with TypeAlias?
+
+
+	//	- Function resolution doesn't favor sub-parameter class over parent-parameter class
+	//	- SimpleType and Lambda assignableTo should have different behavior from accepts
+	//	- cascade copy
+	//	- cascade replacements (SimpleType -> given type)
+	//	- for type alias as well
+
+	to addEventHandler(handler: EventHandler) {
+		handlers.append(handler)
+	}
+
+	to removeEventHandler(handler: EventHandler) {
+		handlers.remove(handler)
+	}
+
+	to emit(event: E) {
+		loop over handlers as handler {
+			handler(event)
+		}
+	}
+}

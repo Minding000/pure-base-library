@@ -1,0 +1,8 @@
+native Bool class {
+
+	native operator !: Bool
+	native operator &(right: Bool): Bool
+	native operator |(right: Bool): Bool
+
+	native to toggle()
+}

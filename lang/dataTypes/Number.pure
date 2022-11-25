@@ -1,0 +1,19 @@
+referencing Pure
+
+trait Number {
+
+	operator ++
+	operator --
+	operator +=(right: Number)
+	operator -=(right: Number)
+	operator *=(right: Number)
+	operator /=(right: Number)
+	operator +(right: Number): Number
+	operator -(right: Number): Number
+	operator *(right: Number): Number
+	operator /(right: Number): Number
+	operator <(right: Number): Bool
+	operator >(right: Number): Bool
+	operator <=(right: Number): Bool
+	operator >=(right: Number): Bool
+}

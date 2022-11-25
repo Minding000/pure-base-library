@@ -1,0 +1,19 @@
+referencing Pure
+
+native Byte class: Int {
+
+	native operator ++
+	native operator --
+	native operator +=(right: Byte)
+	native operator -=(right: Byte)
+	native operator *=(right: Byte)
+	native operator /=(right: Byte)
+	native operator +(right: Byte): Byte
+	native operator -(right: Byte): Byte
+	native operator *(right: Byte): Byte
+	native operator /(right: Byte): Byte
+	native operator <(right: Byte): Bool
+	native operator >(right: Byte): Bool
+	native operator <=(right: Byte): Bool
+	native operator >=(right: Byte): Bool
+}

@@ -1,0 +1,6 @@
+Cli class {
+	
+	to printLine(message: String) {
+
+	}
+}

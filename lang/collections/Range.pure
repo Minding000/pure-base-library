@@ -1,0 +1,35 @@
+referencing Pure
+
+Range class {
+	containing N: Number
+	val: N {
+		start = 0
+		end
+		step = 1
+	}
+	val: Bool {
+		isStartInclusive = yes
+		isEndInclusive = no
+	}
+
+	init(end)
+	init(start, end)
+
+	it contains(number: N): Bool {
+		if isStartInclusive {
+			if start > number
+				return no
+		} else {
+			if start >= number
+				return no
+		}
+		if isEndInclusive {
+			if end < number
+				return no
+		} else {
+			if end <= number
+				return no
+		}
+		return yes
+	}
+}

@@ -1,0 +1,19 @@
+referencing Pure
+
+native Int class: Number {
+
+	native operator ++
+	native operator --
+	native operator +=(right: Int)
+	native operator -=(right: Int)
+	native operator *=(right: Int)
+	native operator /=(right: Int)
+	native operator +(right: Int): Int
+	native operator -(right: Int): Int
+	native operator *(right: Int): Int
+	native operator /(right: Int): Int
+	native operator <(right: Int): Bool
+	native operator >(right: Int): Bool
+	native operator <=(right: Int): Bool
+	native operator >=(right: Int): Bool
+}

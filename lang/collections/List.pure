@@ -1,0 +1,96 @@
+referencing Pure
+
+List class {
+	containing Element
+	var length: Int
+	var: Node? = null {
+		head
+		tail
+	}
+
+	init
+
+	init(...values: ...Element) {
+		loop over values as value
+			append(value)
+	}
+
+	init(value: Element, length) {
+		loop over Range(length)
+			append(value)
+	}
+
+	to {
+		prepend(element: Element) {
+			val node = Node(element)
+			node.nextNode = head
+			head?.previousNode = node
+			head = node
+		}
+
+		insert(index: Int, element: Element) {
+			if(index == 0)
+				prepend(element)
+			if(index == length)
+				append(element)
+			var currentIndex = 1
+			var previousNode: Node? = head
+			loop while currentIndex < index {
+				previousNode = previousNode?.nextNode
+				currentIndex++
+			}
+			val nextNode = previousNode?.nextNode
+			val node = Node(element)
+			node.previousNode = previousNode
+			previousNode?.nextNode = node
+			node.nextNode = nextNode
+			nextNode?.previousNode = node
+		}
+
+		append(element: Element) {
+			val node = Node(element)
+			node.previousNode = tail
+			tail?.nextNode = node
+			tail = node
+		}
+
+		remove(element: Element) {
+			loop over this as node {
+				if node.element == element {
+					node.previousNode.nextNode = node.nextNode
+					node.nextNode.previousNode = node.previousNode
+					node.previousNode = null
+					node.nextNode = null
+				}
+			}
+		}
+	}
+
+	operator {
+		[index: Int]: Element {
+			loop over this as i, node
+				if i == index
+					return node.element
+		}
+
+		[index: Int](element: Element) {
+			var currentIndex = 0
+			var node: Node? = head
+			loop while currentIndex < index {
+				node = node?.nextNode
+				currentIndex++
+			}
+			node?.element = element
+		}
+	}
+
+	Node class {
+		var: Node? = null {
+			previousNode
+			nextNode
+		}
+		var element: Element
+
+		init(element)
+	}
+}

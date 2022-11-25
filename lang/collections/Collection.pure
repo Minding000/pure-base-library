@@ -1,0 +1,7 @@
+referencing Pure
+
+trait Collection {
+	containing Element
+
+	operator [position: Int](): Element
+}

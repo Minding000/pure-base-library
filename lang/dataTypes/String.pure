@@ -1,0 +1,8 @@
+referencing Pure
+
+String class {
+	var length: Int
+
+	native operator +=(right: String)
+	native operator +(right: String): String
+}

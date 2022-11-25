@@ -1,0 +1,7 @@
+referencing Pure
+
+KeyPressEvent class: Event {}
+KeyDownEvent class: Event {}
+KeyUpEvent class: Event {}
+
+Keyboard class: <KeyPressEvent>Emitter & <KeyDownEvent>Emitter & <KeyUpEvent>Emitter {}

@@ -1,0 +1,14 @@
+// The different streams should be properties of the application
+//  initializer by a native call to a initializer function that takes them as parameters
+// Then you should be able to import the property object in other files
+
+CLI object {
+	
+	fun write(text: String) {
+		
+	}
+
+	fun print(text: String) {
+		write("$text\n")
+	}
+}
