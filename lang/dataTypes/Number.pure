@@ -1,6 +1,6 @@
 referencing Pure
 
-trait Number {
+/* abstract */ Number class {
 
 	operator ++
 	operator --

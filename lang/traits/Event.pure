@@ -2,7 +2,7 @@ referencing Pure
 
 Event class {}
 
-trait Emitter {
+/* abstract */ Emitter class {
 	containing E: Event
 	alias EventHandler = (E) =>|
 
