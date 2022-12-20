@@ -4,6 +4,7 @@ native Float class: Number {
 
 	native operator ++
 	native operator --
+	native operator -(): Float
 	native operator +=(right: Float)
 	native operator -=(right: Float)
 	native operator *=(right: Float)

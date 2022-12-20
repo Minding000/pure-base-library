@@ -4,6 +4,7 @@ native Int class: Number {
 
 	native operator ++
 	native operator --
+	native operator -(): Int
 	native operator +=(right: Int)
 	native operator -=(right: Int)
 	native operator *=(right: Int)

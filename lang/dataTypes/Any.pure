@@ -1,3 +1,5 @@
+referencing Pure
+
 native Any class {
-	
+	operator ==(other: Any): Bool
 }

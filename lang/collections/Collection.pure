@@ -1,6 +1,6 @@
 referencing Pure
 
-/* abstract */ Collection class {
+abstract Collection class {
 	containing Element
 
 	operator [position: Int](): Element

@@ -1,9 +1,10 @@
 referencing Pure
 
-/* abstract */ Number class {
+abstract Number class {
 
 	operator ++
 	operator --
+	operator -(): Number
 	operator +=(right: Number)
 	operator -=(right: Number)
 	operator *=(right: Number)
