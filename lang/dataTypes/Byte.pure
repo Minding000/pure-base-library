@@ -2,9 +2,9 @@ referencing Pure
 
 native Byte class: Int {
 
-	native operator ++
-	native operator --
-	native operator -(): Byte
+	native overriding operator ++
+	native overriding operator --
+	native overriding operator -: Byte
 	native operator +=(right: Byte)
 	native operator -=(right: Byte)
 	native operator *=(right: Byte)
