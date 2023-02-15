@@ -4,11 +4,11 @@
 
 CLI object {
 	
-	fun write(text: String) {
+	to write(text: String) {
 		
 	}
 
-	fun print(text: String) {
+	to print(text: String) {
 		write("$text\n")
 	}
 }

@@ -1,0 +1,7 @@
+referencing Pure
+
+abstract Iterable class {
+	containing IteratorImplementation: Iterator
+	
+	to createIterator(): IteratorImplementation
+}

@@ -1,11 +1,11 @@
 referencing Pure
 
-Range class {
+Range class: <<N>RangeIterator>Iterable {
 	containing N: Number
 	val: N {
 		start = 0
 		end
-		step = 1
+		stepSize = 1
 	}
 	val: Bool {
 		isStartInclusive = yes
@@ -31,5 +31,27 @@ Range class {
 				return no
 		}
 		return yes
+	}
+		
+	overriding to createIterator(): <N>RangeIterator {
+		return RangeIterator(this)
+	}
+	
+	RangeIterator class: <N>ValueIterator {
+		containing N
+		val range: <N>Range
+		overriding var currentValue: N
+		overriding val isDone gets !range.contains(currentValue)
+	
+		init(range) {
+			if range.isStartInclusive
+				currentValue = range.start
+			else
+				currentValue = range.start + range.stepSize
+		}
+		
+		overriding to advance() {
+			currentValue += range.stepSize
+		}
 	}
 }

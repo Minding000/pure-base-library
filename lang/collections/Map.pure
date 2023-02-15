@@ -1,0 +1,52 @@
+referencing Pure
+
+Map class: <<Key, Value>MapIterator>Iterable {
+	containing Key, Value
+	var size: Int
+	val keys = <Key>List()
+	val values = <Value>List()
+	
+	init
+		
+	overriding to createIterator(): <Key, Value>MapIterator {
+		return MapIterator(this)
+	}
+
+	operator {
+		[key: Key]: Value {
+			loop over keys as index, currentKey {
+				if currentKey == key
+					return values[index]
+			}
+			raise Exception("Key '$key' does not exist.")
+		}
+
+		[key: Key](value: Value) {
+			loop over keys as index, currentKey {
+				if currentKey == key {
+					values[index] = value
+					return
+				}
+			}
+			keys.append(key)
+			values.append(value)
+		}
+	}
+	
+	MapIterator class: <Key>KeyIterator & <Value>ValueIterator {
+		containing Key, Value
+		val map: <Key, Value>Map
+		val keyIterator: <Key>List.ListIterator
+		overriding val currentKey gets keyIterator.currentValue
+		overriding val currentValue gets map[currentKey]
+		overriding val isDone gets keyIterator.isDone
+		
+		init(map) {
+			keyIterator = map.keys.createIterator()
+		}
+		
+		overriding to advance() {
+			keyIterator.advance()
+		}
+	}
+}

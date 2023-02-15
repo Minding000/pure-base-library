@@ -1,0 +1,8 @@
+referencing Pure
+
+abstract Iterator class {
+
+	val isDone: Bool
+	
+	to advance()
+}

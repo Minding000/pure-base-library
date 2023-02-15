@@ -1,6 +1,6 @@
 referencing Pure
 
-List class {
+List class: <<Element>ListIterator>Iterable {
 	containing Element
 	var length: Int
 	var: Node? = null {
@@ -29,10 +29,14 @@ List class {
 		}
 
 		insert(index: Int, element: Element) {
-			if(index == 0)
+			if index == 0 {
 				prepend(element)
-			if(index == length)
+				return
+			}
+			if index == length {
 				append(element)
+				return
+			}
 			var currentIndex = 1
 			var previousNode: Node? = head
 			loop while currentIndex < index {
@@ -65,12 +69,17 @@ List class {
 			}
 		}
 	}
+		
+	overriding to createIterator(): <Element>ListIterator {
+		return ListIterator(this)
+	}
 
 	operator {
 		[index: Int]: Element {
-			loop over this as i, node
-				if i == index
+			loop over this as currentIndex, node
+				if currentIndex == index
 					return node.element
+			raise Exception("The index '$index' is outside of the lists length.")
 		}
 
 		[index: Int](element: Element) {
@@ -92,5 +101,19 @@ List class {
 		var element: Element
 
 		init(element)
+	}
+	
+	ListIterator class: <Int>IndexIterator & <Element>ValueIterator {
+		containing Element
+		val list: <Element>List
+		overriding var currentIndex: Int = 0
+		overriding val currentValue gets list[currentIndex]
+		overriding val isDone gets currentIndex >= list.length
+		
+		init(list)
+		
+		overriding to advance() {
+			currentIndex++
+		}
 	}
 }

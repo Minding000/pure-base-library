@@ -1,0 +1,7 @@
+referencing Pure
+
+abstract KeyIterator class: Iterator {
+	containing Key
+	
+	val currentKey: Key
+}

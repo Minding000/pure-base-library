@@ -1,0 +1,7 @@
+referencing Pure
+
+Exception class {
+	val description: String
+	
+	init(description)
+}
