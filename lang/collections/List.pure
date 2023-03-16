@@ -1,8 +1,8 @@
 referencing Pure
 
-List class: <<Element>ListIterator>Iterable {
+List class: <Iterator>Iterable {
 	containing Element
-	var length: Int
+	var length = 0
 	var: Node? = null {
 		head
 		tail
@@ -11,8 +11,10 @@ List class: <<Element>ListIterator>Iterable {
 	init
 
 	init(...values: ...Element) {
-		loop over values as value
+		loop over values as value {
 			append(value)
+			length++
+		}
 	}
 
 	init(value: Element, length) {
@@ -69,10 +71,6 @@ List class: <<Element>ListIterator>Iterable {
 			}
 		}
 	}
-		
-	overriding to createIterator(): <Element>ListIterator {
-		return ListIterator(this)
-	}
 
 	operator {
 		[index: Int]: Element {
@@ -92,25 +90,25 @@ List class: <<Element>ListIterator>Iterable {
 			node?.element = element
 		}
 	}
+		
+	overriding to createIterator(): Iterator {
+		return Iterator()
+	}
 
-	Node class {
+	bound Node class {
 		var: Node? = null {
 			previousNode
 			nextNode
 		}
-		var element: Element
+		val element: Element
 
 		init(element)
 	}
 	
-	ListIterator class: <Int>IndexIterator & <Element>ValueIterator {
-		containing Element
-		val list: <Element>List
+	bound Iterator class: <Int>IndexIterator & <Element>ValueIterator {
 		overriding var currentIndex: Int = 0
-		overriding val currentValue gets list[currentIndex]
-		overriding val isDone gets currentIndex >= list.length
-		
-		init(list)
+		overriding val currentValue gets this<List>[currentIndex]
+		overriding val isDone gets currentIndex >= length
 		
 		overriding to advance() {
 			currentIndex++

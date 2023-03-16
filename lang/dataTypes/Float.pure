@@ -1,6 +1,8 @@
 referencing Pure
 
 native Float class: Number {
+	
+	native overriding converting init(value: Int)
 
 	native overriding operator ++
 	native overriding operator --

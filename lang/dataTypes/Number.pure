@@ -1,6 +1,7 @@
 referencing Pure
 
 abstract Number class {
+	abstract converting init(value: Int)
 
 	operator ++
 	operator --

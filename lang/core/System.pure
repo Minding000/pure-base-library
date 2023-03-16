@@ -51,7 +51,7 @@ native System class {
 	}
 	
 	WindowManager object {
-		to createWindow(): Window {
+		to createWindow(): Window? {
 			return null
 		}
 

@@ -1,16 +1,10 @@
 referencing Pure
 
-Map class: <<Key, Value>MapIterator>Iterable {
+Map class: <Iterator>Iterable {
 	containing Key, Value
 	var size: Int
 	val keys = <Key>List()
 	val values = <Value>List()
-	
-	init
-		
-	overriding to createIterator(): <Key, Value>MapIterator {
-		return MapIterator(this)
-	}
 
 	operator {
 		[key: Key]: Value {
@@ -32,18 +26,16 @@ Map class: <<Key, Value>MapIterator>Iterable {
 			values.append(value)
 		}
 	}
-	
-	MapIterator class: <Key>KeyIterator & <Value>ValueIterator {
-		containing Key, Value
-		val map: <Key, Value>Map
-		val keyIterator: <Key>List.ListIterator
-		overriding val currentKey gets keyIterator.currentValue
-		overriding val currentValue gets map[currentKey]
-		overriding val isDone gets keyIterator.isDone
 		
-		init(map) {
-			keyIterator = map.keys.createIterator()
-		}
+	overriding to createIterator(): Iterator {
+		return Iterator()
+	}
+	
+	bound Iterator class: <Key>KeyIterator & <Value>ValueIterator {
+		val keyIterator = keys.createIterator()
+		overriding val currentKey gets keyIterator.currentValue
+		overriding val currentValue gets this[currentKey]
+		overriding val isDone gets keyIterator.isDone
 		
 		overriding to advance() {
 			keyIterator.advance()
