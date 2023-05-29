@@ -3,7 +3,7 @@ referencing Pure
 Range class: <Iterator>Iterable {
 	containing N: Number
 	val: N {
-		start = 0
+		start
 		end
 		stepSize = 1
 	}
@@ -12,8 +12,11 @@ Range class: <Iterator>Iterable {
 		isEndInclusive = no
 	}
 
-	init(end)
 	init(start, end)
+	init(end) {
+		start = 0
+	}
+
 
 	it contains(number: N): Bool {
 		if isStartInclusive {

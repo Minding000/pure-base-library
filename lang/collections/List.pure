@@ -61,22 +61,25 @@ List class: <Iterator>Iterable {
 		}
 
 		remove(element: Element) {
-			loop over this as node {
-				if node.element == element {
-					node.previousNode.nextNode = node.nextNode
-					node.nextNode.previousNode = node.previousNode
-					node.previousNode = null
-					node.nextNode = null
+			var currentNode = head
+			loop while !currentNode? {
+				if currentNode.element == element {
+					currentNode.previousNode?.nextNode = currentNode.nextNode
+					currentNode.nextNode?.previousNode = currentNode.previousNode
+					currentNode.previousNode = null
+					currentNode.nextNode = null
+					break
 				}
+				currentNode = currentNode.nextNode
 			}
 		}
 	}
 
 	operator {
 		[index: Int]: Element {
-			loop over this as currentIndex, node
+			loop over this as currentIndex, element
 				if currentIndex == index
-					return node.element
+					return element
 			raise Exception("The index '$index' is outside of the lists length.")
 		}
 
@@ -100,7 +103,7 @@ List class: <Iterator>Iterable {
 			previousNode
 			nextNode
 		}
-		val element: Element
+		var element: Element
 
 		init(element)
 	}

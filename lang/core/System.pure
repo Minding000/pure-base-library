@@ -33,21 +33,13 @@ native System class {
 		val isCryptographicallySafe: Bool
 		val isHardwareDevice: Bool
 
-		to getRandomBytes(length: Int): <Byte>Array {
-
-		}
+		native to getRandomBytes(length: Int): <Byte>Array
 		
-		to getRandomInt(): Int {
-
-		}
+		native to getRandomInt(): Int
 		
-		to getRandomFloat(): Float {
-
-		}
+		native to getRandomFloat(): Float
 		
-		to getRandomString(): String {
-
-		}
+		native to getRandomString(length: Int): String
 	}
 	
 	WindowManager object {
@@ -72,7 +64,7 @@ native System class {
 			val name: String
 			val cores: <Core>Array
 			val coreCount: Int
-			val threadCount: Int
+			val totalThreadCount: Int
 
 			Core class {
 				val threadCount: Int
@@ -88,7 +80,6 @@ native System class {
 		val extensionSeparator: String
 
 		to lockFile() {
-
 
 		}
 

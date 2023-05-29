@@ -3,5 +3,5 @@ referencing Pure
 abstract IndexIterator class: Iterator {
 	containing Index
 	
-	val currentIndex: Index
+	abstract val currentIndex: Index
 }

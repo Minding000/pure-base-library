@@ -3,6 +3,8 @@ referencing Pure
 String class {
 	var length: Int
 
+	native init
+
 	native operator +=(right: String)
 	native operator +(right: String): String
 }

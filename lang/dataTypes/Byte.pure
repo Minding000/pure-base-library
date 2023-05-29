@@ -1,6 +1,6 @@
 referencing Pure
 
-native Byte class: Int {
+native Byte class: Number {
 	
 	native overriding converting init(value: Int)
 
