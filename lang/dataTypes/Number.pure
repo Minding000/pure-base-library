@@ -4,8 +4,6 @@ abstract Number class {
 	
 	abstract converting init(value: Int)
 
-	operator ++
-	operator --
 	operator -: Number
 	operator +=(right: Number)
 	operator -=(right: Number)

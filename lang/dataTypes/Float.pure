@@ -4,8 +4,6 @@ native Float class: Number {
 	
 	native overriding converting init(value: Int)
 
-	native overriding operator ++
-	native overriding operator --
 	native overriding operator -: Float
 	native operator +=(right: Float)
 	native operator -=(right: Float)

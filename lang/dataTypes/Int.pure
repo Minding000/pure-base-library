@@ -4,8 +4,8 @@ native Int class: Number {
 	
 	native overriding converting init(value: Int)
 
-	native overriding operator ++
-	native overriding operator --
+	native operator ++
+	native operator --
 	native overriding operator -: Int
 	native operator +=(right: Int)
 	native operator -=(right: Int)

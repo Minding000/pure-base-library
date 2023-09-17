@@ -4,8 +4,8 @@ native Byte class: Number {
 	
 	native overriding converting init(value: Int)
 
-	native overriding operator ++
-	native overriding operator --
+	native operator ++
+	native operator --
 	native overriding operator -: Byte
 	native operator +=(right: Byte)
 	native operator -=(right: Byte)
