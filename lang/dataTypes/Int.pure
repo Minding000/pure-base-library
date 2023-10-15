@@ -1,6 +1,6 @@
 referencing Pure
 
-native Int class: Number {
+native copied Int class: Number {
 	
 	native overriding converting init(value: Int)
 

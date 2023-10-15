@@ -1,4 +1,4 @@
-native Bool class {
+native copied Bool class {
 
 	native operator !: Bool
 	native operator &(right: Bool): Bool

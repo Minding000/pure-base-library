@@ -40,19 +40,20 @@ Range class: <Iterator>Iterable {
 		return Iterator()
 	}
 	
-	bound Iterator class: <N>ValueIterator {
-		overriding var currentValue: N
-		overriding val isDone gets !contains(currentValue)
+	bound Iterator class: Identifiable & <N>ValueIterator {
+		var value: N
+		overriding computed currentValue gets value
+		overriding computed isDone gets !contains(currentValue)
 	
 		init {
 			if isStartInclusive
-				currentValue = start
+				value = start
 			else
-				currentValue = (start + stepSize) as! N
+				value = (start + stepSize) as! N
 		}
 		
 		overriding to advance() {
-			currentValue += stepSize
+			value += stepSize
 		}
 	}
 }

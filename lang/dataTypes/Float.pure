@@ -1,6 +1,6 @@
 referencing Pure
 
-native Float class: Number {
+native copied Float class: Number {
 	
 	native overriding converting init(value: Int)
 

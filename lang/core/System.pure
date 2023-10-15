@@ -1,5 +1,5 @@
 referencing Pure
-
+/*
 native System class {
 	Clock object {
 		val time: Time
@@ -92,3 +92,4 @@ native System class {
 		}
 	}
 }
+*/

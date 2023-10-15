@@ -3,5 +3,5 @@ referencing Pure
 abstract KeyIterator class: Iterator {
 	containing Key
 	
-	abstract val currentKey: Key
+	abstract computed currentKey: Key
 }

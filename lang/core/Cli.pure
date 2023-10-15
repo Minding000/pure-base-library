@@ -2,5 +2,7 @@ referencing Pure
 
 Cli class {
 	
-	to printLine(message: String)
+	to printLine(message: String) {
+		//TODO implement
+	}
 }

@@ -1,5 +1,6 @@
 referencing Pure
 
-native Any class {
-	operator ==(other: Any): Bool
+abstract Any class {
+	//abstract computed hashCode: Int
+	abstract operator ==(other: Any): Bool
 }

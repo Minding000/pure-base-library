@@ -2,11 +2,12 @@ referencing Pure
 
 native Array class {
 	containing Element
-	val length: Int
+	val size: Int
 
 	native init(...values: ...Element)
-	native init(value: Element, length)
+	native init(value: Element, size)
 
+	native operator +(right: <Element>Array): <Element>Array
 	native operator [index: Int]: Element
 	native operator [index: Int](element: Element)
 }

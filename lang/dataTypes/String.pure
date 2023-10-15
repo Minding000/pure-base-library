@@ -1,10 +1,18 @@
 referencing Pure
 
-String class {
-	var length: Int
+copied String class {
+	computed byteCount: Int
+		gets bytes.size
+	computed characterCount: Int
+		gets bytes.size
+	var bytes: <Byte>Array
 
-	native init
+	init(bytes)
 
-	native operator +=(right: String)
-	native operator +(right: String): String
+	operator +=(right: String) {
+		bytes = bytes + right.bytes
+	}
+	operator +(right: String): String {
+		return String(bytes + right.bytes)
+	}
 }

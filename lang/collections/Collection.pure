@@ -3,5 +3,5 @@ referencing Pure
 abstract Collection class {
 	containing Element
 
-	operator [position: Int](): Element
+	abstract operator [position: Int](): Element
 }

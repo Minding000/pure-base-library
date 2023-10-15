@@ -31,11 +31,11 @@ Map class: <Iterator>Iterable {
 		return Iterator()
 	}
 	
-	bound Iterator class: <Key>KeyIterator & <Value>ValueIterator {
+	bound Iterator class: Identifiable & <Key>KeyIterator & <Value>ValueIterator {
 		val keyIterator = keys.createIterator()
-		overriding val currentKey gets keyIterator.currentValue
-		overriding val currentValue gets this<Map>[currentKey]
-		overriding val isDone gets keyIterator.isDone
+		overriding computed currentKey gets keyIterator.currentValue
+		overriding computed currentValue gets this<Map>[currentKey]
+		overriding computed isDone gets keyIterator.isDone
 		
 		overriding to advance() {
 			keyIterator.advance()

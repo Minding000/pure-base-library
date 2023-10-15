@@ -1,1 +1,6 @@
-native Null object
+referencing Pure
+
+native Null object {
+
+	native overriding operator ==(other: Any): Bool
+}

@@ -2,7 +2,7 @@ referencing Pure
 
 abstract Iterator class {
 
-	abstract val isDone: Bool
+	abstract computed isDone: Bool
 	
 	abstract to advance()
 }

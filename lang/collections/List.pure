@@ -108,13 +108,14 @@ List class: <Iterator>Iterable {
 		init(element)
 	}
 	
-	bound Iterator class: <Int>IndexIterator & <Element>ValueIterator {
-		overriding var currentIndex: Int = 0
-		overriding val currentValue gets this<List>[currentIndex]
-		overriding val isDone gets currentIndex >= length
+	bound Iterator class: Identifiable & <Int>IndexIterator & <Element>ValueIterator {
+		var index = 0
+		overriding computed currentIndex gets index
+		overriding computed currentValue gets this<List>[currentIndex]
+		overriding computed isDone gets currentIndex >= length
 		
 		overriding to advance() {
-			currentIndex++
+			index++
 		}
 	}
 }

@@ -3,5 +3,5 @@ referencing Pure
 abstract ValueIterator class: Iterator {
 	containing Value
 	
-	abstract val currentValue: Value
+	abstract computed currentValue: Value
 }
