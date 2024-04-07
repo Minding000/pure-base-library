@@ -8,11 +8,73 @@ copied String class {
 	var bytes: <Byte>Array
 
 	init(bytes)
+	init(bytes: <Byte>Iterable) {
+		this.bytes = Array(bytes)
+	}
+
+	to split(delimiter: Byte): <String>List {
+		val parts = <String>List()
+		if bytes.isEmpty
+			return parts
+		var currentPartBytes = <Byte>List()
+		loop over bytes as byte {
+			if byte == delimiter {
+				parts.append(String(currentPartBytes))
+				currentPartBytes.clear()
+				next
+			}
+			currentPartBytes.append(byte)
+		}
+		parts.append(String(currentPartBytes))
+		return parts
+	}
+
+	to split(delimiter: String): <String>List {
+		val parts = <String>List()
+		if bytes.isEmpty
+			return parts
+		val delimitingBytes = delimiter.bytes
+		var currentPartBytes = <Byte>List()
+		var matchIndex = 0
+		loop over bytes as byte {
+			if byte == delimitingBytes[matchIndex] {
+				matchIndex++
+				if(matchIndex == delimitingBytes.size) {
+					parts.append(String(currentPartBytes))
+					currentPartBytes.clear()
+					matchIndex = 0
+				}
+				next
+			} else {
+				var rollbackIndex = 0
+				loop while rollbackIndex < matchIndex {
+					currentPartBytes.append(delimitingBytes[rollbackIndex])
+					rollbackIndex++
+				}
+				matchIndex = 0
+			}
+			currentPartBytes.append(byte)
+		}
+		var rollbackIndex = 0
+		loop while rollbackIndex < matchIndex {
+			currentPartBytes.append(delimitingBytes[rollbackIndex])
+			rollbackIndex++
+		}
+		parts.append(String(currentPartBytes))
+		return parts
+	}
 
 	operator +=(right: String) {
 		bytes = bytes + right.bytes
 	}
+
 	operator +(right: String): String {
 		return String(bytes + right.bytes)
+	}
+
+	overriding operator ==(right: Any?): Bool {
+		if right is! rightString: String
+			return no
+		return bytes == rightString.bytes
 	}
 }

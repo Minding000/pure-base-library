@@ -1,6 +1,6 @@
 referencing Pure
 
-List class: <Iterator>Iterable {
+List class: Identifiable & <Element>Iterable {
 	containing Element
 	var length = 0
 	var: Node? = null {
@@ -8,16 +8,16 @@ List class: <Iterator>Iterable {
 		tail
 	}
 
+	computed isEmpty: Bool gets length == 0
+
 	init
 
 	init(...values: ...Element) {
-		loop over values as value {
+		loop over values as value
 			append(value)
-			length++
-		}
 	}
 
-	init(value: Element, length) {
+	init(value: Element, length: Int) {
 		loop over Range(length)
 			append(value)
 	}
@@ -25,9 +25,14 @@ List class: <Iterator>Iterable {
 	to {
 		prepend(element: Element) {
 			val node = Node(element)
-			node.nextNode = head
-			head?.previousNode = node
+			if head? {
+				node.nextNode = head
+				head.previousNode = node
+			} else {
+				tail = node
+			}
 			head = node
+			length++
 		}
 
 		insert(index: Int, element: Element) {
@@ -51,27 +56,44 @@ List class: <Iterator>Iterable {
 			previousNode?.nextNode = node
 			node.nextNode = nextNode
 			nextNode?.previousNode = node
+			length++
 		}
 
 		append(element: Element) {
 			val node = Node(element)
-			node.previousNode = tail
-			tail?.nextNode = node
+			if tail? {
+				node.previousNode = tail
+				tail.nextNode = node
+			} else {
+				head = node
+			}
 			tail = node
+			length++
 		}
 
 		remove(element: Element) {
 			var currentNode = head
 			loop while currentNode? {
 				if currentNode.element == element {
+					if currentNode == head
+						head = currentNode.nextNode
+					if currentNode == tail
+						tail = currentNode.previousNode
 					currentNode.previousNode?.nextNode = currentNode.nextNode
 					currentNode.nextNode?.previousNode = currentNode.previousNode
 					currentNode.previousNode = null
 					currentNode.nextNode = null
+					length--
 					break
 				}
 				currentNode = currentNode.nextNode
 			}
+		}
+
+		clear() {
+			head = null
+			tail = null
+			length = 0
 		}
 	}
 
@@ -93,7 +115,7 @@ List class: <Iterator>Iterable {
 			node?.element = element
 		}
 	}
-		
+
 	overriding to createIterator(): Iterator {
 		return Iterator()
 	}
@@ -107,14 +129,21 @@ List class: <Iterator>Iterable {
 
 		init(element)
 	}
-	
+
 	bound Iterator class: Identifiable & <Int>IndexIterator & <Element>ValueIterator {
 		var index = 0
+		var currentNode = head
 		overriding computed currentIndex gets index
-		overriding computed currentValue gets this<List>[currentIndex]
-		overriding computed isDone gets currentIndex >= length
+		overriding computed currentValue: Element gets {
+			val node = currentNode
+			if !node?
+				raise Exception("Cannot access current value of iterator, because it is done.")
+			return node.element
+		}
+		overriding computed isDone gets !currentNode?
 		
 		overriding to advance() {
+			currentNode = currentNode?.nextNode
 			index++
 		}
 	}

@@ -1,20 +1,19 @@
 referencing Pure
 
 abstract Number class {
-	
-	abstract converting init(value: Int)
+	abstract instances ZERO, ONE
 
-	operator -: Number
-	operator +=(right: Number)
-	operator -=(right: Number)
-	operator *=(right: Number)
-	operator /=(right: Number)
-	operator +(right: Number): Number
-	operator -(right: Number): Number
-	operator *(right: Number): Number
-	operator /(right: Number): Number
-	operator <(right: Number): Bool
-	operator >(right: Number): Bool
-	operator <=(right: Number): Bool
-	operator >=(right: Number): Bool
+	abstract operator -: Self
+	abstract monomorphic operator +=(right: Self)
+	abstract monomorphic operator -=(right: Self)
+	abstract monomorphic operator *=(right: Self)
+	abstract monomorphic operator /=(right: Self)
+	abstract monomorphic operator +(right: Self): Self
+	abstract monomorphic operator -(right: Self): Self
+	abstract monomorphic operator *(right: Self): Self
+	abstract monomorphic operator /(right: Self): Self
+	abstract monomorphic operator <(right: Self): Bool
+	abstract monomorphic operator >(right: Self): Bool
+	abstract monomorphic operator <=(right: Self): Bool
+	abstract monomorphic operator >=(right: Self): Bool
 }

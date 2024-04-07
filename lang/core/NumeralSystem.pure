@@ -1,0 +1,9 @@
+referencing Pure
+
+NumeralSystem enum {
+	instances DECIMAL(10)
+
+	val base: Int
+
+	init(base)
+}

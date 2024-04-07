@@ -1,10 +1,6 @@
 referencing Pure
 
 abstract Iterable class {
-	//TODO Is this generic type useful?
-	// Why not just return 'Iterator' from 'createIterator()'?
-	// The subclass should be able to choose a more specific return type.
-	containing IteratorImplementation: Iterator
-	
-	abstract to createIterator(): IteratorImplementation
+	containing Value
+	abstract to createIterator(): <Value>ValueIterator
 }

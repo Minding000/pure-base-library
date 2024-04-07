@@ -1,13 +1,31 @@
 referencing Pure
 
-native Array class {
+native Array class: Identifiable & <Element>Iterable {
 	containing Element
 	val size: Int
 
+	computed isEmpty: Bool gets size == 0
+
 	native init(...values: ...Element)
+	native init(iterable: <Element>Iterable)
 	native init(value: Element, size)
 
 	native operator +(right: <Element>Array): <Element>Array
 	native operator [index: Int]: Element
 	native operator [index: Int](element: Element)
+
+	overriding to createIterator(): Iterator {
+		return Iterator()
+	}
+
+	bound Iterator class: Identifiable & <Int>IndexIterator & <Element>ValueIterator {
+		var index = 0
+		overriding computed currentIndex gets index
+		overriding computed currentValue: Element gets this<Array>[index]
+		overriding computed isDone gets index == size
+		
+		overriding to advance() {
+			index++
+		}
+	}
 }

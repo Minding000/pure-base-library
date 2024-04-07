@@ -1,0 +1,21 @@
+referencing Pure
+
+NativeOutputStream class: OutputStream {
+	val identifier: Int
+
+	init(identifier)
+	
+	//native overriding to writeByte(byte: Byte)
+	//native overriding to writeBytes(bytes: <Byte>Array)
+	overriding to writeByte(byte: Byte) {}
+	overriding to writeBytes(bytes: <Byte>Array) {}
+	overriding operator ==(right: Any?): Bool {
+		if right is! rightNativeOutputStream: NativeOutputStream
+			return no
+		return identifier == rightNativeOutputStream.identifier
+	}
+
+	//open Identifier enum: Int {
+	//	instances STANDARD_OUTPUT(1), STANDARD_ERROR(2)
+	//}
+}

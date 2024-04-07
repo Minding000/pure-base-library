@@ -1,0 +1,27 @@
+referencing Pure
+
+CommandLineInterface class {
+	val inputStream: InputStream
+	val outputStream: OutputStream
+	val errorStream: OutputStream
+
+	init(inputStream, outputStream, errorStream)
+	init(process: Application.Process) {
+		init(process.inputStream, process.outputStream, process.errorStream)
+	}
+	
+	to readLine(): String {
+		var bytes = <Byte>List()
+		loop {
+			val byte = inputStream.readByte()
+			if byte == AsciiCharacterCode.NEW_LINE
+				break
+			bytes.append(byte)
+		}
+		return String(bytes)
+	}
+
+	to writeLine(message: String) {
+		outputStream.writeBytes(message.bytes)
+	}
+}

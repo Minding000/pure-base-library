@@ -1,6 +1,6 @@
 referencing Pure
 
-Event class {}
+Event class
 
 abstract Emitter class {
 	containing E: Event

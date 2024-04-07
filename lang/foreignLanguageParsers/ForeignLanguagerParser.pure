@@ -1,0 +1,9 @@
+referencing Pure
+
+/*
+ForeignLanguageParser object {
+	to compile() {}
+	to parse() {}
+	to getCompilationDependencies(): File[]
+}
+*/

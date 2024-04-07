@@ -1,11 +1,11 @@
 referencing Pure
 
-Range class: <Iterator>Iterable {
-	containing N: Number
+Range class: Identifiable & <N>Iterable {
+	containing N: specific Number
 	val: N {
 		start
 		end
-		stepSize = 1
+		stepSize = .ONE
 	}
 	val: Bool {
 		isStartInclusive = yes
@@ -14,9 +14,8 @@ Range class: <Iterator>Iterable {
 
 	init(start, end)
 	init(end) {
-		start = 0
+		start = .ZERO
 	}
-
 
 	it contains(number: N): Bool {
 		if isStartInclusive {
@@ -49,7 +48,7 @@ Range class: <Iterator>Iterable {
 			if isStartInclusive
 				value = start
 			else
-				value = (start + stepSize) as! N
+				value = start + stepSize
 		}
 		
 		overriding to advance() {

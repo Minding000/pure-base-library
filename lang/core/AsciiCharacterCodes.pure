@@ -1,0 +1,5 @@
+referencing Pure
+
+alias AsciiCharacterCode = Byte {
+	instances NEW_LINE(10), ZERO(48)
+}

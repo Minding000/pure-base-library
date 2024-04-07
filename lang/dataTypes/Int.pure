@@ -1,22 +1,97 @@
 referencing Pure
 
 native copied Int class: Number {
+	overriding instances ZERO(0), ONE(1)
 	
-	native overriding converting init(value: Int)
+	native converting init(value: Byte)
+	native init(value: Int)
 
+	init(decimalString: String) {
+		val lastIndex = decimalString.bytes.size - 1
+		var value = 0
+		loop over decimalString.bytes as index, byte {
+			val inverseIndex = lastIndex - index
+			val modifier = NumeralSystem.DECIMAL.base.toThePowerOf(inverseIndex)
+			val digitValue = byte - AsciiCharacterCode.ZERO
+			value += modifier * digitValue
+		}
+		init(value)
+	}
+
+	// Both primitive and instance defintions are defined natively (DONE)
+	native it toThePowerOf(exponent: Int): Int
+
+	// Instance defintion is defined natively; primitive operation is part of compiler (DONE)
 	native operator ++
 	native operator --
-	native overriding operator -: Int
-	native operator +=(right: Int)
-	native operator -=(right: Int)
-	native operator *=(right: Int)
-	native operator /=(right: Int)
-	native operator +(right: Int): Int
-	native operator -(right: Int): Int
-	native operator *(right: Int): Int
-	native operator /(right: Int): Int
-	native operator <(right: Int): Bool
-	native operator >(right: Int): Bool
-	native operator <=(right: Int): Bool
-	native operator >=(right: Int): Bool
+	native overriding operator -: Self
+	native overriding monomorphic operator +=(right: Self)
+	native overriding monomorphic operator -=(right: Self)
+	native overriding monomorphic operator *=(right: Self)
+	native overriding monomorphic operator /=(right: Self)
+	// Both primitive and instance defintions are compiled separately
+	// Compiled: SelfType is pointer
+	// Primitive: SelfType is primitive type
+	operator +(right: Byte): Int {
+		return this + Int(right)
+	}
+	native overriding monomorphic operator +(right: Self): Self
+	operator +(right: Float): Float {
+		return Float(this) + right
+	}
+	operator -(right: Byte): Int {
+		return this - Int(right)
+	}
+	native overriding monomorphic operator -(right: Self): Self
+	operator -(right: Float): Float {
+		return Float(this) - right
+	}
+	operator *(right: Byte): Int {
+		return this * Int(right)
+	}
+	native overriding monomorphic operator *(right: Self): Self
+	operator *(right: Float): Float {
+		return Float(this) * right
+	}
+	operator /(right: Byte): Int {
+		return this / Int(right)
+	}
+	native overriding monomorphic operator /(right: Self): Self
+	operator /(right: Float): Float {
+		return Float(this) / right
+	}
+	operator <(right: Byte): Bool {
+		return this < Int(right)
+	}
+	native overriding monomorphic operator <(right: Self): Bool
+	operator <(right: Float): Bool {
+		return Float(this) < right
+	}
+	operator >(right: Byte): Bool {
+		return this > Int(right)
+	}
+	native overriding monomorphic operator >(right: Self): Bool
+	operator >(right: Float): Bool {
+		return Float(this) > right
+	}
+	operator <=(right: Byte): Bool {
+		return this <= Int(right)
+	}
+	native overriding monomorphic operator <=(right: Self): Bool
+	operator <=(right: Float): Bool {
+		return Float(this) <= right
+	}
+	operator >=(right: Byte): Bool {
+		return this >= Int(right)
+	}
+	native overriding monomorphic operator >=(right: Self): Bool
+	operator >=(right: Float): Bool {
+		return Float(this) >= right
+	}
+	native operator ==(right: Int): Bool
+	overriding operator ==(right: Any?): Bool {
+		if(right is! Int)
+			return no
+		return this == right
+	}
 }

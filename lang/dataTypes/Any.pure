@@ -2,5 +2,5 @@ referencing Pure
 
 abstract Any class {
 	//abstract computed hashCode: Int
-	abstract operator ==(other: Any): Bool
+	abstract operator ==(other: Any?): Bool
 }

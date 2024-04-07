@@ -1,20 +1,29 @@
 referencing Pure
 
 native copied Float class: Number {
+	overriding instances ZERO(0), ONE(1)
 	
-	native overriding converting init(value: Int)
+	native converting init(value: Byte)
+	native converting init(value: Int)
+	native init(value: Float)
 
-	native overriding operator -: Float
-	native operator +=(right: Float)
-	native operator -=(right: Float)
-	native operator *=(right: Float)
-	native operator /=(right: Float)
-	native operator +(right: Float): Float
-	native operator -(right: Float): Float
-	native operator *(right: Float): Float
-	native operator /(right: Float): Float
-	native operator <(right: Float): Bool
-	native operator >(right: Float): Bool
-	native operator <=(right: Float): Bool
-	native operator >=(right: Float): Bool
+	native overriding operator -: Self
+	native overriding monomorphic operator +=(right: Self)
+	native overriding monomorphic operator -=(right: Self)
+	native overriding monomorphic operator *=(right: Self)
+	native overriding monomorphic operator /=(right: Self)
+	native overriding monomorphic operator +(right: Self): Self
+	native overriding monomorphic operator -(right: Self): Self
+	native overriding monomorphic operator *(right: Self): Self
+	native overriding monomorphic operator /(right: Self): Self
+	native overriding monomorphic operator <(right: Self): Bool
+	native overriding monomorphic operator >(right: Self): Bool
+	native overriding monomorphic operator <=(right: Self): Bool
+	native overriding monomorphic operator >=(right: Self): Bool
+	native operator ==(right: Float): Bool
+	overriding operator ==(right: Any?): Bool {
+		if(right is! Float)
+			return no
+		return this == right
+	}
 }

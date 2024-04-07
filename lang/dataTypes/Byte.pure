@@ -1,22 +1,77 @@
 referencing Pure
 
 native copied Byte class: Number {
-	
-	native overriding converting init(value: Int)
+	overriding instances ZERO(0), ONE(1)
+
+	native init(value: Byte)
 
 	native operator ++
 	native operator --
-	native overriding operator -: Byte
-	native operator +=(right: Byte)
-	native operator -=(right: Byte)
-	native operator *=(right: Byte)
-	native operator /=(right: Byte)
-	native operator +(right: Byte): Byte
-	native operator -(right: Byte): Byte
-	native operator *(right: Byte): Byte
-	native operator /(right: Byte): Byte
-	native operator <(right: Byte): Bool
-	native operator >(right: Byte): Bool
-	native operator <=(right: Byte): Bool
-	native operator >=(right: Byte): Bool
+	native overriding operator -: Self
+	native overriding monomorphic operator +=(right: Self)
+	native overriding monomorphic operator -=(right: Self)
+	native overriding monomorphic operator *=(right: Self)
+	native overriding monomorphic operator /=(right: Self)
+	native overriding monomorphic operator +(right: Self): Self
+	operator +(right: Int): Int {
+		return Int(this) + right
+	}
+	operator +(right: Float): Float {
+		return Float(this) + right
+	}
+	native overriding monomorphic operator -(right: Self): Self
+	operator -(right: Int): Int {
+		return Int(this) - right
+	}
+	operator -(right: Float): Float {
+		return Float(this) - right
+	}
+	native overriding monomorphic operator *(right: Self): Self
+	operator *(right: Int): Int {
+		return Int(this) * right
+	}
+	operator *(right: Float): Float {
+		return Float(this) * right
+	}
+	native overriding monomorphic operator /(right: Self): Self
+	operator /(right: Int): Int {
+		return Int(this) / right
+	}
+	operator /(right: Float): Float {
+		return Float(this) / right
+	}
+	native overriding monomorphic operator <(right: Self): Bool
+	operator <(right: Int): Bool {
+		return Int(this) < right
+	}
+	operator <(right: Float): Bool {
+		return Float(this) < right
+	}
+	native overriding monomorphic operator >(right: Self): Bool
+	operator >(right: Int): Bool {
+		return Int(this) > right
+	}
+	operator >(right: Float): Bool {
+		return Float(this) > right
+	}
+	native overriding monomorphic operator <=(right: Self): Bool
+	operator <=(right: Int): Bool {
+		return Int(this) <= right
+	}
+	operator <=(right: Float): Bool {
+		return Float(this) <= right
+	}
+	native overriding monomorphic operator >=(right: Self): Bool
+	operator >=(right: Int): Bool {
+		return Int(this) >= right
+	}
+	operator >=(right: Float): Bool {
+		return Float(this) >= right
+	}
+	native operator ==(right: Byte): Bool
+	overriding operator ==(right: Any?): Bool {
+		if(right is! Byte)
+			return no
+		return this == right
+	}
 }

@@ -1,10 +1,12 @@
 referencing Pure
 
-Map class: <Iterator>Iterable {
+Map class: Identifiable & <Value>Iterable {
 	containing Key, Value
 	var size = 0
 	val keys = <Key>List()
 	val values = <Value>List()
+
+	computed isEmpty: Bool gets size == 0
 
 	operator {
 		[key: Key]: Value {
