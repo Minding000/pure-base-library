@@ -6,9 +6,9 @@ NativeOutputStream class: OutputStream {
 	init(identifier)
 	
 	//native overriding to writeByte(byte: Byte)
-	//native overriding to writeBytes(bytes: <Byte>Array)
 	overriding to writeByte(byte: Byte) {}
-	overriding to writeBytes(bytes: <Byte>Array) {}
+	native overriding to writeBytes(bytes: <Byte>Array)
+
 	overriding operator ==(right: Any?): Bool {
 		if right is! rightNativeOutputStream: NativeOutputStream
 			return no
