@@ -1,7 +1,7 @@
 referencing Pure
 
 NativeInputStream class: InputStream {
-	val identifier: Int
+	val identifier: Identifier
 
 	init(identifier)
 	
@@ -19,7 +19,7 @@ NativeInputStream class: InputStream {
 		return identifier == rightNativeInputStream.identifier
 	}
 
-	//open Identifier enum: Int {
-	//	instances STANDARD_INPUT(0)
-	//}
+	alias Identifier = Int {
+		instances STANDARD_INPUT(0)
+	}
 }
