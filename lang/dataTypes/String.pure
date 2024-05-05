@@ -5,11 +5,14 @@ copied String class {
 		gets bytes.size
 	computed characterCount: Int
 		gets bytes.size
-	var bytes: <Byte>Array
+	var bytes: ByteArray
 
 	init(bytes)
-	init(bytes: <Byte>Iterable) {
-		this.bytes = Array(bytes)
+	init(bytes: <Byte>List) {
+		//this.bytes = bytes.toByteArray()
+		this.bytes = ByteArray(0, bytes.size)
+		loop over bytes as index, byte
+			this.bytes[index] = byte
 	}
 
 	to split(delimiter: Byte): <String>List {

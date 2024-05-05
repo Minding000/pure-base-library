@@ -1,0 +1,39 @@
+referencing Pure
+
+native ByteArray class: Identifiable & <Byte>Iterable {
+	val size: Int
+
+	computed isEmpty: Bool gets size == 0
+
+	native init(...values: ...Byte)
+	//TODO implement
+	//native init(iterable: <Byte>Iterable)
+	native init(value: Byte, size)
+
+	native operator +(right: ByteArray): ByteArray
+	native operator [index: Int]: Byte
+	native operator [index: Int](element: Byte)
+
+	overriding to createIterator(): Iterator {
+		return Iterator()
+	}
+
+	bound Iterator class: Identifiable & <Int>IndexIterator & <Byte>ValueIterator {
+		var index = 0
+		overriding computed currentIndex gets index
+		overriding computed currentValue: Byte gets this<ByteArray>[index]
+		overriding computed isDone gets index == size
+		
+		overriding to advance() {
+			index++
+		}
+	}
+}
+
+//ByteArray class = specialized <Byte>Array
+//
+//<Byte>List extension {
+//	it toByteArray(): ByteArray {
+//		return ByteArray(this)
+//	}
+//}

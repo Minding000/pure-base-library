@@ -7,7 +7,8 @@ native Array class: Identifiable & <Element>Iterable {
 	computed isEmpty: Bool gets size == 0
 
 	native init(...values: ...Element)
-	native init(iterable: <Element>Iterable)
+	//TODO implement
+	//native init(iterable: <Element>Iterable)
 	native init(value: Element, size)
 
 	native operator +(right: <Element>Array): <Element>Array

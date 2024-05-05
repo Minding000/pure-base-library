@@ -3,5 +3,5 @@ referencing Pure
 abstract InputStream class {
 	
 	abstract to readByte(): Byte
-	abstract to readBytes(amount: Int): <Byte>Array
+	abstract to readBytes(amount: Int): ByteArray
 }

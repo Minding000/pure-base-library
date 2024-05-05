@@ -3,5 +3,5 @@ referencing Pure
 abstract OutputStream class {
 	
 	abstract to writeByte(byte: Byte)
-	abstract to writeBytes(bytes: <Byte>Array)
+	abstract to writeBytes(bytes: ByteArray)
 }
