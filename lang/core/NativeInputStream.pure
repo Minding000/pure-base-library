@@ -5,10 +5,7 @@ NativeInputStream class: InputStream {
 
 	init(identifier)
 	
-	//native overriding to readByte(): Byte
-	overriding to readByte(): Byte {
-		return 0
-	}
+	native overriding to readByte(): Byte
 	native overriding to readBytes(amount: Int): ByteArray
 	overriding operator ==(right: Any?): Bool {
 		if right is! rightNativeInputStream: NativeInputStream

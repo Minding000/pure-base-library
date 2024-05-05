@@ -21,7 +21,12 @@ CommandLineInterface class {
 		return String(bytes)
 	}
 
-	to writeLine(message: String) {
+	to write(message: String) {
 		outputStream.writeBytes(message.bytes)
+	}
+
+	to writeLine(message: String) {
+		write(message)
+		outputStream.writeByte(AsciiCharacterCode.NEW_LINE)
 	}
 }
