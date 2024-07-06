@@ -27,6 +27,7 @@ CommandLineInterface class {
 
 	to writeLine(message: String) {
 		write(message)
+		//TODO new line should be portable (OS specific)
 		outputStream.writeByte(AsciiCharacterCode.NEW_LINE)
 	}
 }

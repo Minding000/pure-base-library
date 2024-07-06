@@ -15,6 +15,7 @@ copied String class {
 			this.bytes[index] = byte
 	}
 
+
 	to split(delimiter: Byte): <String>List {
 		val parts = <String>List()
 		if bytes.isEmpty

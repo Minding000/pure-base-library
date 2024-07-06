@@ -1,19 +1,7 @@
 referencing Pure
 
-NativeInputStream class: InputStream {
-	val identifier: Identifier
+native NativeInputStream class: Identifiable & InputStream {
 
-	init(identifier)
-	
 	native overriding to readByte(): Byte
 	native overriding to readBytes(amount: Int): ByteArray
-	overriding operator ==(right: Any?): Bool {
-		if right is! rightNativeInputStream: NativeInputStream
-			return no
-		return identifier == rightNativeInputStream.identifier
-	}
-
-	alias Identifier = Int {
-		instances STANDARD_INPUT(0)
-	}
 }

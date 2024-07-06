@@ -2,6 +2,20 @@ referencing Pure
 
 Exception class {
 	val description: String
+	val stacktrace = <Location>List()
 	
 	init(description)
+
+	to addLocation(moduleName: String, fileName: String, lineNumber: Int, description: String) {
+		stacktrace.append(Location(moduleName, fileName, lineNumber, description))
+	}
+
+	Location class {
+		val moduleName: String
+		val fileName: String
+		val lineNumber: Int
+		val description: String
+
+		init(moduleName, fileName, lineNumber, description)
+	}
 }

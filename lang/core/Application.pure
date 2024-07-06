@@ -5,12 +5,16 @@ Application class {
 	bound Process object {
 		// native val environmentVariables: <String, String>Map
 		// native val arguments: <String>Array
-		val inputStream = NativeInputStream(.STANDARD_INPUT)
-		val outputStream = NativeOutputStream(.STANDARD_OUTPUT)
-		val errorStream = NativeOutputStream(.STANDARD_ERROR)
+		val inputStream = getStandardInputStream()
+		val outputStream = getStandardOutputStream()
+		val errorStream = getStandardOutputStream()
 		// native to exit(code: Int = 0)
 		// native to getVirtualMemoryUsage(): Long
 		// native to getPhysicalMemoryUsage(): Long
 		// native to getComputeUsage(): Long
+
+		native to getStandardInputStream(): NativeInputStream
+		native to getStandardOutputStream(): NativeOutputStream
+		native to getStandardErrorStream(): NativeOutputStream
 	}
 }
