@@ -2,7 +2,7 @@ referencing Pure
 
 abstract Iterator class {
 
-	abstract computed isDone: Bool
+	abstract gettable computed isDone: Bool
 	
 	abstract to advance()
 }

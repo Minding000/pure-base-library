@@ -1,10 +1,18 @@
 referencing Pure
 
 abstract Identifiable class {
-	//overriding computed hashCode: Int gets getHashCode()
-	//native to getHashCode(): Int
+	//overriding native gettable computed hashCode: Int
+
+	native gettable computed stringRepresentation: String
+
 	overriding operator ==(other: Any?): Bool {
 		return this === other
 	}
+	overriding operator !=(other: Any?): Bool {
+		return !(this == other)
+	}
 	native operator ===(other: Any?): Bool
+	operator !==(other: Any?): Bool {
+		return !(this === other)
+	}
 }

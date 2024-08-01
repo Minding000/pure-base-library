@@ -21,9 +21,13 @@ native copied Float class: Number {
 	native overriding monomorphic operator <=(right: Self): Bool
 	native overriding monomorphic operator >=(right: Self): Bool
 	native operator ==(right: Float): Bool
+	native operator !=(right: Float): Bool
 	overriding operator ==(right: Any?): Bool {
 		if(right is! Float)
 			return no
 		return this == right
+	}
+	overriding operator !=(right: Any?): Bool {
+		return !(this == right)
 	}
 }

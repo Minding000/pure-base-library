@@ -3,6 +3,12 @@ referencing Pure
 Exception class {
 	val description: String
 	val stacktrace = <Location>List()
+	overriding computed stringRepresentation: String gets {
+		var stringRepresentation = description + String.NEW_LINE
+		loop over stacktrace as location
+			stringRepresentation += " at " + location + String.NEW_LINE
+		return stringRepresentation
+	}
 	
 	init(description)
 
@@ -15,6 +21,9 @@ Exception class {
 		val fileName: String
 		val lineNumber: Int
 		val description: String
+
+		overriding computed stringRepresentation
+			gets moduleName + ":" + fileName + ":" + lineNumber + ":" + description
 
 		init(moduleName, fileName, lineNumber, description)
 	}

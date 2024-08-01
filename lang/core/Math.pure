@@ -1,0 +1,6 @@
+referencing Pure
+
+Math object {
+
+	native to getRemainder(dividend: Int, divisor: Int): Int
+}

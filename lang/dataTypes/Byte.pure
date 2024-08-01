@@ -4,6 +4,8 @@ native copied Byte class: Number {
 	overriding instances ZERO(0), ONE(1)
 
 	native init(value: Byte)
+	//TODO remove second parameter when labels are implemented to disambiguate
+	native init(value: Int, flag: Int)
 
 	native operator ++
 	native operator --
@@ -69,9 +71,13 @@ native copied Byte class: Number {
 		return Float(this) >= right
 	}
 	native operator ==(right: Byte): Bool
+	native operator !=(right: Byte): Bool
 	overriding operator ==(right: Any?): Bool {
 		if(right is! Byte)
 			return no
 		return this == right
+	}
+	overriding operator !=(right: Any?): Bool {
+		return !(this == right)
 	}
 }

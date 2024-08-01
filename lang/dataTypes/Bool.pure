@@ -7,10 +7,14 @@ native copied Bool class {
 	native operator and(right: Bool): Bool
 	native operator or(right: Bool): Bool
 	native operator ==(right: Bool): Bool
+	native operator !=(right: Bool): Bool
 	overriding operator ==(right: Any?): Bool {
 		if(right is! Bool)
 			return no
 		return this == right
+	}
+	overriding operator !=(right: Any?): Bool {
+		return !(this == right)
 	}
 
 	native to toggle()

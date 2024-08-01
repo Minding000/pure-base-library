@@ -14,7 +14,8 @@ CommandLineInterface class {
 		var bytes = <Byte>List()
 		loop {
 			val byte = inputStream.readByte()
-			if byte == AsciiCharacterCode.NEW_LINE
+			//TODO new line should be portable (OS specific)
+			if byte == AsciiCharacterCode.LINE_FEED
 				break
 			bytes.append(byte)
 		}
@@ -27,7 +28,6 @@ CommandLineInterface class {
 
 	to writeLine(message: String) {
 		write(message)
-		//TODO new line should be portable (OS specific)
-		outputStream.writeByte(AsciiCharacterCode.NEW_LINE)
+		write(String.NEW_LINE)
 	}
 }

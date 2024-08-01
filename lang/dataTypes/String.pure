@@ -1,12 +1,32 @@
 referencing Pure
 
 copied String class {
+	instances NEW_LINE(ByteArray(AsciiCharacterCode.LINE_FEED))
 	computed byteCount: Int
 		gets bytes.size
 	computed characterCount: Int
 		gets bytes.size
 	var bytes: ByteArray
 
+	converting init(identifiable: Identifiable) {
+		bytes = identifiable.stringRepresentation.bytes
+	}
+	converting init(integer: Int) {
+		if integer == 0 {
+			bytes = ByteArray(AsciiCharacterCode.ZERO)
+			//TODO support return statements in initializers
+			//return
+		} else {
+			val list = <Byte>List()
+			var remainder = integer
+			//TODO add 'until' keyword
+			loop while remainder != 0 {
+				list.append(Byte(48 + Math.getRemainder(remainder, 10), 0))
+				remainder /= 10
+			}
+			init(list)
+		}
+	}
 	init(bytes)
 	init(bytes: <Byte>List) {
 		//this.bytes = bytes.toByteArray()
@@ -14,7 +34,6 @@ copied String class {
 		loop over bytes as index, byte
 			this.bytes[index] = byte
 	}
-
 
 	to split(delimiter: Byte): <String>List {
 		val parts = <String>List()
@@ -80,5 +99,8 @@ copied String class {
 		if right is! rightString: String
 			return no
 		return bytes == rightString.bytes
+	}
+	overriding operator !=(right: Any?): Bool {
+		return !(this == right)
 	}
 }

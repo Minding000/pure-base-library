@@ -3,5 +3,5 @@ referencing Pure
 abstract IndexIterator class: Iterator {
 	containing Index
 	
-	abstract computed currentIndex: Index
+	abstract gettable computed currentIndex: Index
 }

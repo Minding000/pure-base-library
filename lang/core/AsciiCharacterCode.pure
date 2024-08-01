@@ -1,6 +1,5 @@
 referencing Pure
 
 alias AsciiCharacterCode = Byte {
-	//TODO rename NEW_LINE -> LINE_FEED
-	instances NEW_LINE(10), HORIZONTAL_TAB(11), CARRIAGE_RETURN(13), ZERO(48)
+	instances LINE_FEED(10), HORIZONTAL_TAB(11), CARRIAGE_RETURN(13), ZERO(48)
 }

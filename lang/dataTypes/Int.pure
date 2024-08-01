@@ -18,10 +18,8 @@ native copied Int class: Number {
 		init(value)
 	}
 
-	// Both primitive and instance defintions are defined natively (DONE)
 	native it toThePowerOf(exponent: Int): Int
 
-	// Instance defintion is defined natively; primitive operation is part of compiler (DONE)
 	native operator ++
 	native operator --
 	native overriding operator -: Self
@@ -29,9 +27,7 @@ native copied Int class: Number {
 	native overriding monomorphic operator -=(right: Self)
 	native overriding monomorphic operator *=(right: Self)
 	native overriding monomorphic operator /=(right: Self)
-	// Both primitive and instance defintions are compiled separately
-	// Compiled: SelfType is pointer
-	// Primitive: SelfType is primitive type
+
 	operator +(right: Byte): Int {
 		return this + Int(right)
 	}
@@ -89,9 +85,13 @@ native copied Int class: Number {
 		return Float(this) >= right
 	}
 	native operator ==(right: Int): Bool
+	native operator !=(right: Int): Bool
 	overriding operator ==(right: Any?): Bool {
 		if(right is! Int)
 			return no
 		return this == right
+	}
+	overriding operator !=(right: Any?): Bool {
+		return !(this == right)
 	}
 }
