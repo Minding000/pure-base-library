@@ -14,18 +14,17 @@ copied String class {
 	converting init(integer: Int) {
 		if integer == 0 {
 			bytes = ByteArray(AsciiCharacterCode.ZERO)
-			//TODO support return statements in initializers
-			//return
-		} else {
-			val list = <Byte>List()
-			var remainder = integer
-			//TODO add 'until' keyword
-			loop while remainder != 0 {
-				list.append(Byte(48 + Math.getRemainder(remainder, 10), 0))
-				remainder /= 10
-			}
-			init(list)
+			return
 		}
+		val radix = NumeralSystem.DECIMAL.base
+		val list = <Byte>List()
+		var remainder = integer
+		//TODO add 'until' keyword
+		loop while remainder != 0 {
+			list.prepend(AsciiCharacterCode.ZERO + Byte(Math.getRemainder(remainder, radix), 0))
+			remainder /= radix
+		}
+		init(list)
 	}
 	init(bytes)
 	init(bytes: <Byte>List) {
