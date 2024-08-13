@@ -13,6 +13,8 @@ native copied Int class: Number {
 			val inverseIndex = lastIndex - index
 			val modifier = NumeralSystem.DECIMAL.base.toThePowerOf(inverseIndex)
 			val digitValue = byte - AsciiCharacterCode.ZERO
+			if digitValue < 0 or digitValue > 9
+				raise Exception("Invalid digit at index " + index)
 			value += modifier * digitValue
 		}
 		init(value)

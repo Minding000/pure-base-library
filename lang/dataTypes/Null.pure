@@ -3,4 +3,5 @@ referencing Pure
 native Null object {
 
 	native overriding operator ==(other: Any?): Bool
+	native overriding operator !=(other: Any?): Bool
 }

@@ -14,6 +14,8 @@ native ByteArray class: Identifiable & <Byte>Iterable {
 	native operator [index: Int]: Byte
 	native operator [index: Int](element: Byte)
 
+	native overriding operator ==(right: Any?): Bool
+
 	overriding to createIterator(): Iterator {
 		return Iterator()
 	}

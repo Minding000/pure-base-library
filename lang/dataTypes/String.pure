@@ -99,7 +99,7 @@ copied String class {
 			return no
 		return bytes == rightString.bytes
 	}
-	overriding operator !=(right: Any?): Bool {
-		return !(this == right)
+	overriding operator !=(other: Any?): Bool {
+		return !(this == other)
 	}
 }
