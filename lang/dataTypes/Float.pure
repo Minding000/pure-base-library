@@ -2,6 +2,9 @@ referencing Pure
 
 native copied Float class: Number {
 	overriding instances ZERO(0), ONE(1)
+
+	overriding computed absolute: Self
+		gets if this >= 0 this else -this
 	
 	native converting init(value: Byte)
 	native converting init(value: Int)

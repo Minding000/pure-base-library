@@ -18,12 +18,14 @@ copied String class {
 		}
 		val radix = NumeralSystem.DECIMAL.base
 		val list = <Byte>List()
-		var remainder = integer
+		var remainder = integer.absolute
 		//TODO add 'until' keyword
 		loop while remainder != 0 {
 			list.prepend(AsciiCharacterCode.ZERO + Byte(Math.getRemainder(remainder, radix), 0))
 			remainder /= radix
 		}
+		if integer < 0
+			list.prepend(AsciiCharacterCode.MINUS)
 		init(list)
 	}
 	init(bytes)

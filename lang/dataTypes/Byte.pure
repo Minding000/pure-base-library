@@ -3,6 +3,9 @@ referencing Pure
 native copied Byte class: Number {
 	overriding instances ZERO(0), ONE(1)
 
+	overriding computed absolute: Self
+		gets if this >= 0 this else -this
+
 	native init(value: Byte)
 	//TODO remove second parameter when labels are implemented to disambiguate
 	native init(value: Int, flag: Int)

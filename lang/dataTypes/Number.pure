@@ -3,6 +3,10 @@ referencing Pure
 abstract Number class {
 	abstract instances ZERO, ONE
 
+//	computed absolute: Self
+//		gets if this >= ZERO this else -this
+	abstract gettable computed absolute: Self
+
 	abstract operator -: Self
 	abstract monomorphic operator +=(right: Self)
 	abstract monomorphic operator -=(right: Self)

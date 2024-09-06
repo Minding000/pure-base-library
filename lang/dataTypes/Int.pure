@@ -2,6 +2,9 @@ referencing Pure
 
 native copied Int class: Number {
 	overriding instances ZERO(0), ONE(1)
+
+	overriding computed absolute: Self
+		gets if this >= 0 this else -this
 	
 	native converting init(value: Byte)
 	native init(value: Int)
@@ -9,7 +12,12 @@ native copied Int class: Number {
 	init(decimalString: String) {
 		val lastIndex = decimalString.bytes.size - 1
 		var value = 0
+		var sign = 1
 		loop over decimalString.bytes as index, byte {
+			if index == 0 and byte == AsciiCharacterCode.MINUS {
+				sign = -1
+				next
+			}
 			val inverseIndex = lastIndex - index
 			val modifier = NumeralSystem.DECIMAL.base.toThePowerOf(inverseIndex)
 			val digitValue = byte - AsciiCharacterCode.ZERO
@@ -17,7 +25,7 @@ native copied Int class: Number {
 				raise Exception("Invalid digit at index " + index)
 			value += modifier * digitValue
 		}
-		init(value)
+		init(sign * value)
 	}
 
 	native it toThePowerOf(exponent: Int): Int
