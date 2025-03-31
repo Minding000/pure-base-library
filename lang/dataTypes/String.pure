@@ -28,6 +28,7 @@ copied String class {
 			list.prepend(AsciiCharacterCode.MINUS)
 		init(list)
 	}
+	native converting init(float: Float)
 	init(bytes)
 	init(bytes: <Byte>List) {
 		//this.bytes = bytes.toByteArray()
