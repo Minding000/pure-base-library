@@ -10,6 +10,8 @@ native copied Float class: Number {
 	native converting init(value: Int)
 	native init(value: Float)
 
+	native init(decimalString: String)
+
 	native overriding operator -: Self
 	native overriding monomorphic operator +=(right: Self)
 	native overriding monomorphic operator -=(right: Self)
