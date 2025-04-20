@@ -24,6 +24,7 @@ CommandLineInterface class {
 
 	to write(message: String) {
 		outputStream.writeBytes(message.bytes)
+		outputStream.flush()
 	}
 
 	to writeLine(message: String) {

@@ -4,4 +4,5 @@ native NativeOutputStream class: Identifiable & OutputStream {
 	
 	native overriding to writeByte(byte: Byte)
 	native overriding to writeBytes(bytes: ByteArray)
+	native overriding to flush()
 }
