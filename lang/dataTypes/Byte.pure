@@ -5,6 +5,8 @@ native copied Byte class: Number {
 
 	overriding computed absolute: Self
 		gets if this >= 0 this else -this
+	overriding computed squared: Self
+		gets this * this
 
 	native init(value: Byte)
 	//TODO remove second parameter when labels are implemented to disambiguate

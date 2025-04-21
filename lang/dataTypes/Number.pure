@@ -5,7 +5,10 @@ abstract Number class {
 
 //	computed absolute: Self
 //		gets if this >= ZERO this else -this
+//	computed squared: Self
+//		gets this * this
 	abstract gettable computed absolute: Self
+	abstract gettable computed squared: Self
 
 	abstract operator -: Self
 	abstract monomorphic operator +=(right: Self)

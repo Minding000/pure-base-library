@@ -11,6 +11,19 @@ native Array class: Identifiable & <Element>Iterable {
 	//native init(iterable: <Element>Iterable)
 	native init(value: Element, size)
 
+	//to joinedBy(glue: String): String {
+	//	val result = ""
+	//	var isFirst = yes
+	//	loop over this as item {
+	//		if isFirst
+	//			isFirst = no
+	//		else
+	//			result += glue
+	//		result += item
+	//	}
+	//	return result
+	//}
+
 	native operator +(right: <Element>Array): <Element>Array
 	native operator [index: Int]: Element
 	native operator [index: Int](element: Element)

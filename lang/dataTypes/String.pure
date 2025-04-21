@@ -37,7 +37,7 @@ copied String class {
 			this.bytes[index] = byte
 	}
 
-	to split(delimiter: Byte): <String>List {
+	it splitBy(delimiter: Byte): <String>List {
 		val parts = <String>List()
 		if bytes.isEmpty
 			return parts
@@ -54,7 +54,7 @@ copied String class {
 		return parts
 	}
 
-	to split(delimiter: String): <String>List {
+	it splitBy(delimiter: String): <String>List {
 		val parts = <String>List()
 		if bytes.isEmpty
 			return parts
@@ -87,6 +87,20 @@ copied String class {
 		}
 		parts.append(String(currentPartBytes))
 		return parts
+	}
+
+	it withReplacement(original: String, replacement: String): String {
+		val parts = splitBy(original)
+		val result = ""
+		var isFirst = yes
+		loop over parts as part {
+			if isFirst
+				isFirst = no
+			else
+				result += replacement
+			result += part
+		}
+		return result
 	}
 
 	operator +=(right: String) {
