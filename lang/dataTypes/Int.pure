@@ -7,6 +7,8 @@ native copied Int class: Number {
 		gets if this >= 0 this else -this
 	overriding computed squared: Self
 		gets this * this
+	overriding computed cubed: Self
+		gets this * this * this
 	
 	native converting init(value: Byte)
 	native init(value: Int)

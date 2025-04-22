@@ -7,6 +7,8 @@ native copied Byte class: Number {
 		gets if this >= 0 this else -this
 	overriding computed squared: Self
 		gets this * this
+	overriding computed cubed: Self
+		gets this * this * this
 
 	native init(value: Byte)
 	//TODO remove second parameter when labels are implemented to disambiguate

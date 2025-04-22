@@ -9,6 +9,7 @@ abstract Number class {
 //		gets this * this
 	abstract gettable computed absolute: Self
 	abstract gettable computed squared: Self
+	abstract gettable computed cubed: Self
 
 	abstract operator -: Self
 	abstract monomorphic operator +=(right: Self)
