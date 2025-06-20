@@ -26,6 +26,7 @@ Map class: Identifiable & <Value>Iterable {
 			}
 			keys.append(key)
 			values.append(value)
+			size++
 		}
 	}
 	
