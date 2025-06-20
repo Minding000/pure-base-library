@@ -89,6 +89,24 @@ copied String class {
 		return parts
 	}
 
+	computed capitalized: String gets {
+		val newBytes = ByteArray(0, bytes.size)
+		loop over bytes as index, byte {
+			if index == 0 {
+				if byte >= 97 and byte <= 122
+					newBytes[0] = byte - 32
+				else
+					newBytes[0] = byte
+				next
+			}
+			if byte >= 65 and byte <= 90
+				newBytes[index] = byte + 32
+			else
+				newBytes[index] = byte
+		}
+		return String(newBytes)
+	}
+
 	it withReplacement(original: String, replacement: String): String {
 		val parts = splitBy(original)
 		val result = ""
