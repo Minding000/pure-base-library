@@ -2,6 +2,7 @@ referencing Pure
 
 abstract Any class {
 	//abstract computed hashCode: Int
+	abstract gettable computed stringRepresentation: String
 	abstract operator ==(other: Any?): Bool
 	abstract operator !=(other: Any?): Bool
 }

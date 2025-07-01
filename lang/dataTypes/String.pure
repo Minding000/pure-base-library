@@ -7,9 +7,13 @@ copied String class {
 	computed characterCount: Int
 		gets bytes.size
 	var bytes: ByteArray
+	overriding gettable computed stringRepresentation gets this
 
-	converting init(identifiable: Identifiable) {
+	converting init(identifiable: Any) {
 		bytes = identifiable.stringRepresentation.bytes
+	}
+	converting init(byte: Byte) {
+		init(Int(byte))
 	}
 	converting init(integer: Int) {
 		if integer == 0 {
@@ -19,8 +23,7 @@ copied String class {
 		val radix = NumeralSystem.DECIMAL.base
 		val list = <Byte>List()
 		var remainder = integer.absolute
-		//TODO add 'until' keyword
-		loop while remainder != 0 {
+		loop until remainder == 0 {
 			list.prepend(AsciiCharacterCode.ZERO + Byte(Math.getRemainder(remainder, radix), 0))
 			remainder /= radix
 		}

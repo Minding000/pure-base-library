@@ -1,6 +1,8 @@
 referencing Pure
 
 native copied Bool class {
+	overriding gettable computed stringRepresentation gets String(this)
+
 	native init(value: Bool)
 
 	native operator !: Bool

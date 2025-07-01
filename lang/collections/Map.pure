@@ -14,7 +14,7 @@ Map class: Identifiable & <Value>Iterable {
 				if currentKey == key
 					return values[index]
 			}
-			raise Exception("Key '$key' does not exist.")
+			raise Exception("Key '" + key + "' does not exist.")
 		}
 
 		[key: Key](value: Value) {

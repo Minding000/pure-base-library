@@ -3,8 +3,8 @@ referencing Pure
 Application class {
 	
 	bound Process object {
-		// native val environmentVariables: <String, String>Map
-		// native val arguments: <String>Array
+		val environmentVariables = getEnvironmentVariables()
+		val arguments = getArguments()
 		val inputStream = getStandardInputStream()
 		val outputStream = getStandardOutputStream()
 		val errorStream = getStandardOutputStream()
@@ -13,6 +13,8 @@ Application class {
 		// native to getPhysicalMemoryUsage(): Long
 		// native to getComputeUsage(): Long
 
+		native to getEnvironmentVariables(): <String, String>Map
+		native to getArguments(): <String>Array
 		native to getStandardInputStream(): NativeInputStream
 		native to getStandardOutputStream(): NativeOutputStream
 		native to getStandardErrorStream(): NativeOutputStream

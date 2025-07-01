@@ -9,6 +9,7 @@ native copied Byte class: Number {
 		gets this * this
 	overriding computed cubed: Self
 		gets this * this * this
+	overriding gettable computed stringRepresentation gets String(this)
 
 	native init(value: Byte)
 	//TODO remove second parameter when labels are implemented to disambiguate

@@ -3,7 +3,7 @@ referencing Pure
 abstract Identifiable class {
 	//overriding native gettable computed hashCode: Int
 
-	native gettable computed stringRepresentation: String
+	native overriding gettable computed stringRepresentation: String
 
 	overriding operator ==(other: Any?): Bool {
 		return this === other

@@ -9,6 +9,7 @@ native copied Int class: Number {
 		gets this * this
 	overriding computed cubed: Self
 		gets this * this * this
+	overriding gettable computed stringRepresentation gets String(this)
 	
 	native converting init(value: Byte)
 	native init(value: Int)
